@@ -1,49 +1,71 @@
 use serde::{Serialize, Deserialize};
 
 /// Represents a Language Server Protocol method.
+/// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/)
 #[derive(Serialize)]
 pub enum LspMethod {
     /// Initialize the language server.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#initialize)
     Initialize,
     /// Shutdown the language server.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#shutdown)
     Shutdown,
     /// Notify the language server that a document has changed.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_didChange)
     DidChange,
     /// Notify the language server that a document has been opened.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_didOpen)
     DidOpen,
     /// Notify the language server that a document has been closed.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_didClose)
     DidClose,
     /// Request the language server to provide hover information for a given position in a document.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_hover)
     Hover,
     /// Request the language server to provide completion suggestions for a given position in a document.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_completion)
     Completion,
     /// Request the language server to provide signature help for a given position in a document.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_signatureHelp)
     SignatureHelp,
     /// Request the language server to provide the definition of a symbol at a given position in a document.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_definition)
     Definition,
     /// Request the language server to provide references to a symbol at a given position in a document.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_references)
     References,
     /// Request the language server to provide the document symbols for a given document.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentSymbol)
     DocumentSymbol,
     /// Request the language server to provide the document highlights for a given document and position.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentHighlights)
     DocumentHighlights,
     /// Request the language server to provide the formatting options for a given document.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_formatting)
     DocumentFormatting,
     /// Request the language server to format a given range in a document.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_rangeFormatting)
     RangeFormatting,
     /// Request the language server to format the text inserted at a given position in a document.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_onTypeFormatting)
     OnTypeFormatting,
     /// Request the language server to provide code actions for a given document and position.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_codeAction)
     CodeAction,
     /// Request the language server to provide symbols for a given workspace.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_symbol)
     WorkspaceSymbol,
     /// Request the language server to provide references to a symbol in a given workspace.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_references)
     WorkspaceReferences,
     /// Request the language server to rename a symbol at a given position in a document.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_rename)
     Rename,
     /// Request the language server to prepare for a rename operation at a given position in a document.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_prepareRename)
     PrepareRename,
     /// Request the language server to execute a command.
+    /// [See the LSP specification for more details.](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_executeCommand)
     ExecuteCommand,
 }
 
@@ -67,10 +89,10 @@ impl LspMethod {
             LspMethod::RangeFormatting => "textDocument/rangeFormatting",
             LspMethod::OnTypeFormatting => "textDocument/onTypeFormatting",
             LspMethod::CodeAction => "textDocument/codeAction",
-            LspMethod::WorkspaceSymbol => "workspace/symbol",
-            LspMethod::WorkspaceReferences => "workspace/references",
             LspMethod::Rename => "textDocument/rename",
             LspMethod::PrepareRename => "textDocument/prepareRename",
+            LspMethod::WorkspaceSymbol => "workspace/symbol",
+            LspMethod::WorkspaceReferences => "workspace/references",
             LspMethod::ExecuteCommand => "workspace/executeCommand",
         }
     }
